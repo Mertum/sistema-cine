@@ -3,7 +3,7 @@
     NOTE: Currently in development 🏓
 """
 
-from .movies import MOVIES as movies
+from .movies import MOVIES
 
 class Movie:
     """
@@ -18,8 +18,6 @@ class Movie:
     
     References: None
     """
-
-    __selected_movie = None
 
     def __init__(self, title: str, rating: str, duration: str, seats: int, price: float) -> None:
         """The constructor for Movie class"""
@@ -40,59 +38,53 @@ class Movie:
     def __eq__(self, other: object) -> bool:
         """The equality operator for Movie class"""
         return self.title == other.title
-
-    @property
-    def title(self) -> str:
-        """The Movie title"""
-        return self.__title
     
-    @property
-    def rating(self) -> str:
-        """The Movie rating"""
-        return self.__rating
+    def __ne__(self, other: object) -> bool:
+        """The inequality operator for Movie class"""
+        return self.title != other.title
     
-    @property
-    def duration(self) -> str:
-        """The Movie duration"""
-        return self.__duration
+class MovieManager(Movie):
+    """The MovieManager class which contains attributes and methods for the movie manager object"""
     
-    @property
-    def seats(self) -> int:
-        """The Movie seats"""
-        return self.__seats
+    def __init__(self) -> None:
+        """The constructor of the MovieManager class"""
+        self.movies = MOVIES
+        self.__selected_movie = None
     
-    @property
-    def price(self) -> float:
-        """The Movie price"""
-        return self.__price | int(self.__price)
-    
-    # Movie logical methods in this section.
-
     def display_movie_info(self) -> None:
         """
             This method displays the movie information
-            Args: None
+
+            Args: 
+                This method takes no arguments
+                
             Returns: -> None
         """
         print('Available movies in our system')
-        for index, movie in enumerate(movies):
+        for index, movie in enumerate(self.movies):
             print(f"[{index + 1}] {movie['title']} ({movie['rating']}) - {movie['duration']}")
     
     def select_movie(self) -> None:
         """
             This method selects the movie from the user input
-            Args: None
+
+            Args: 
+                This method takes no arguments
+
             Returns: -> None
         """
         self.display_movie_info()
         option = int(input('Select a movie: '))
-        self.__selected_movie = movies[option - 1]
+        self.__selected_movie = self.movies[option - 1]
         print(f"You selected {self.__selected_movie['title']}")
     
     def get_selected_movie(self) -> dict:
         """
             This method returns the selected movie
-            Args: None
+
+            Args:
+                This method takes no arguments
+
             Returns: -> dict
         """
         return self.__selected_movie
