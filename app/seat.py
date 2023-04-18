@@ -10,8 +10,6 @@ class Seat:
         """The constructor for Seat class"""
         self.row = row
         self.column = column
-        self.__seats = [[("🪑", False) for _ in range(10)] for _ in range(10)]
-        self.__selected_seat = None
     
     def __str__(self) -> str:
         """The string representation of Seat class"""
@@ -25,6 +23,15 @@ class Seat:
         """The equality operator for Seat class"""
         return self.row == other.row and self.column == other.column
     
+class SeatManager(Seat):
+    """This is the SeatManager class which is used to manage seat data"""
+
+    def __init__(self) -> None:
+        """The SeatManager used to manage seat data"""
+        self.__seats = \
+            [[("🪑", False) for _ in range(10)] for _ in range(10)]
+        self.__selected_seat = None
+
     def seat_availability(self) -> bool:
         """The method to check if seat is available"""
         for i, row in enumerate(self.__seats):
