@@ -70,8 +70,10 @@ class Cinema:
             if s.seat_num == seat_num:
                 seat = s
                 break
-        if not seat: raise ValueError("Invalid seat number")
-        if seat.is_booked: raise ValueError("Seat is already booked")
+        if not seat: 
+            raise ValueError("Invalid seat number")
+        if seat.is_booked:
+            raise ValueError("Seat is already booked")
         ticket = Ticket(movie_name, ticket_type, seat_num)
         self.tickets.append(ticket)
         seat.is_booked = True
