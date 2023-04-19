@@ -14,7 +14,6 @@ class Ticket:
         self.movie_name = movie_name
         self.ticket_type = ticket_type
         self.seat_num = seat_num
-        self.price = self.calculate_price()
     
     def __str__(self) -> str:
         """
