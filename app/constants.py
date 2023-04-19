@@ -4,6 +4,7 @@ from .seat import Seat
 from .movie import Movie
 
 class Constants:
+    """This class contains the constants for the app."""
 
     MOVIES = [
         Movie("The Matrix", "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.", 136),

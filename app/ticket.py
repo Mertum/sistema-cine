@@ -17,21 +17,40 @@ class Ticket:
         self.price = self.calculate_price()
     
     def __str__(self) -> str:
-        """The string representation of the Ticket object"""
+        """
+        The string representation of the Ticket object
+
+        Returns: -> str
+        """
         return f"({self.__class__.__name__}) -> {self.movie_name} {self.ticket_type} {self.seat_num}"
     
     def __repr__(self) -> str:
-        """The representation of the Ticket object"""
+        """
+        The representation of the Ticket object
+        
+        Returns: -> str
+        """
         return self.__str__()
     
     def __eq__(self, other: object) -> bool:
-        """Checks if two Ticket objects are equal"""
+        """
+        Checks if two Ticket objects are equal
+
+        Args:
+            other (object): The other object to compare with.
+        
+        Returns: -> bool
+        """
         return self.movie_name == other.movie_name \
             and self.ticket_type == other.ticket_type \
                 and self.seat_num == other.seat_num
     
     def calculate_price(self) -> float:
-        """Calculates the price of the ticket based on the ticket type"""
+        """
+        Calculates the price of the ticket based on the ticket type
+
+        Returns: -> float
+        """
         if self.ticket_type == "regular":
             return 10.0
         elif self.ticket_type == "vip":
